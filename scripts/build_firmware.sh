@@ -7,7 +7,7 @@ set -o pipefail
 PREFIXES_TO_CLEAN=$AMENT_PREFIX_PATH
 FW_TARGETDIR=$(pwd)/firmware
 PREFIX=$(ros2 pkg prefix micro_ros_setup)
-
+echo "build_firmware.sh line 10"
 # Parse cli arguments
 UROS_FAST_BUILD=off
 UROS_VERBOSE_BUILD=off
@@ -35,15 +35,15 @@ do
   esac
 done
 shift $((OPTIND-1))
-
+echo "build_firmware.sh line 38"
 if [[ -n "$@" ]]; then
     UROS_EXTRA_BUILD_ARGS=("$@")
 fi
-
+echo "build_firmware.sh line 42"
 export UROS_FAST_BUILD
 export UROS_VERBOSE_BUILD
 export UROS_EXTRA_BUILD_ARGS
-
+echo "build_firmware.sh line 46"
 # Checking if firmware exists
 if [ -d $FW_TARGETDIR ]; then
     RTOS=$(head -n1 $FW_TARGETDIR/PLATFORM)
@@ -55,7 +55,7 @@ else
     echo "Firmware folder not found. Please use ros2 run micro_ros_setup create_firmware_ws.sh to create a new project."
     exit 1
 fi
-
+echo "build_firmware.sh line 58"
 # clean paths
 . $(dirname $0)/clean_env.sh
 
@@ -65,7 +65,7 @@ if [ $RTOS != "host" ]; then
     . $FW_TARGETDIR/dev_ws/install/setup.bash
     set -o nounset
 fi
-
+echo "build_firmware.sh line 68"
 # Building specific firmware folder
 echo "Building firmware for $RTOS platform $PLATFORM"
 
@@ -74,4 +74,4 @@ if [ $PLATFORM != "generic" ] && [ -d "$PREFIX/config/$RTOS/generic" ]; then
 else
     . $PREFIX/config/$RTOS/$PLATFORM/build.sh
 fi
-
+echo "build_firmware.sh line 77"
