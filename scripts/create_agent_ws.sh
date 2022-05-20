@@ -6,7 +6,7 @@ set -o pipefail
 
 PREFIX=$(ros2 pkg prefix micro_ros_setup)
 TARGETDIR=src
-
+echo "create_agent_ws.sh line 9"
 if [ -z ${EXTERNAL_SKIP+x} ]; then
   EXTERNAL_SKIP=""
 fi
@@ -17,10 +17,11 @@ if [ $# -gt 0 ]
 then
   TARGETDIR=$1
 fi
-
+echo "create_agent_ws.sh line 20"
 [ -d $TARGETDIR ] || mkdir $TARGETDIR
 
 # populate the workspace
 ros2 run micro_ros_setup create_ws.sh $TARGETDIR $PREFIX/config/agent_ros2_packages.txt $PREFIX/config/agent_uros_packages.repos
-
+echo "create_agent_ws.sh line 25"
 rosdep install --from-paths $TARGETDIR -i $TARGETDIR -y --skip-keys="$SKIP"
+echo "create_agent_ws.sh line last"
