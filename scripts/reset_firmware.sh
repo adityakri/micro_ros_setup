@@ -15,7 +15,7 @@ else
     echo "Firmware folder not found. Please use ros2 run micro_ros_setup create_firmware_ws.sh to create a new project."
     exit 1
 fi
-
+echo "reset_firmware.sh line 18"
 # Reset specific firmware
 if [ $PLATFORM != "generic" ] && [ -d "$PREFIX/config/$RTOS/generic" ]; then
     if [ -f $PREFIX/config/$RTOS/generic/reset.sh ]; then
@@ -32,3 +32,4 @@ else
       echo "No reset step found for $RTOS platform $PLATFORM"
     fi
 fi
+echo "reset_firmware.sh line 35"
