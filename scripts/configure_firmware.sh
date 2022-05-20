@@ -15,7 +15,7 @@ else
     echo "Firmware folder not found. Please use ros2 run micro_ros_setup create_firmware_ws.sh to create a new project."
     exit 1
 fi
-
+echo "configure_firmware.sh line 18"
 # Check if configure script exists
 if [ $PLATFORM != "generic" ] && [ -d "$PREFIX/config/$RTOS/generic" ]; then
     if [ ! -f $PREFIX/config/$RTOS/generic/configure.sh ]; then
@@ -28,7 +28,7 @@ else
         exit 0
     fi
 fi
-
+echo "configure_firmware.sh line 31"
 # Parsing micro-ROS arguments
 if [ $# -lt 1 ]; then
   echo "micro-ROS application name must be provided: ros2 run micro_ros_setup configure_firmware.sh [app name] [options]"
@@ -44,7 +44,7 @@ if [ -f $PREFIX/config/$RTOS/list_apps.sh ]; then
     . $PREFIX/config/$RTOS/list_apps.sh
     check_available_app $1
 fi
-
+echo "configure_firmware.sh line 47"
 export CONFIG_NAME=$1
 shift
 
@@ -78,7 +78,7 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
-
+echo "configure_firmware.sh line 81"
 # Configure specific firmware folder if needed
 if [ $PLATFORM != "generic" ] && [ -d "$PREFIX/config/$RTOS/generic" ]; then
     echo "Configuring firmware for $RTOS platform $PLATFORM"
@@ -87,4 +87,4 @@ else
     echo "Configuring firmware for $RTOS platform $PLATFORM"
     exec $PREFIX/config/$RTOS/$PLATFORM/configure.sh $@
 fi
-
+echo "configure_firmware.sh line last"
