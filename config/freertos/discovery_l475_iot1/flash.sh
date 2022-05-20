@@ -19,11 +19,10 @@ pushd $OLIMEX_EXTENSIONS_DIR > /dev/null
         echo "Error. Unsuported OpenOCD USB programmer"
         exit 1
       fi
-
-      openocd -f $PROGRAMMER -f target/stm32f4x.cfg -c init -c "reset halt" -c "flash write_image erase build/micro-ROS.bin 0x08000000" -c "reset" -c "exit"
+      echo "flash.sh.sh line 22"
+      openocd -f $PROGRAMMER -f target/stm32l4x.cfg -c init -c "reset halt" -c "flash write_image erase build/micro-ROS.bin 0x08000000" -c "reset" -c "exit"
   else
     echo "build/micro-ROS.bin not found: please compile before flashing."
   fi
 
 popd > /dev/null
-
