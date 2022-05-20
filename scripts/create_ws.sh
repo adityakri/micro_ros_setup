@@ -42,8 +42,10 @@ fi
 # ROS_DISTRO SPECIFIC
 curl -s https://raw.githubusercontent.com/ros2/ros2/foxy/ros2.repos |\
     ros2 run micro_ros_setup yaml_filter.py ${PACKAGES} > ros2.repos
+echo "create_ws.sh line 45"
 vcs import --input ros2.repos --skip-existing
+echo "create_ws.sh line 47"
 vcs import --input $REPOS --skip-existing
-
+echo "create_ws.sh line 49"
 popd >/dev/null
-
+echo "create_ws.sh line last"
