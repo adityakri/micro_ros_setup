@@ -13,7 +13,7 @@ function clean {
     echo $(echo $(echo $1 | sed 's/:/\n/g' | \
       grep -v -E "($(echo $PREFIXES_TO_CLEAN | sed 's/:/\|/g'))" ) | sed 's/ /:/g' )
 }
-
+echo "clean_env.sh line 16"
 if [ $RTOS == "host" ]; then
   echo "Compiling for host environment: not cleaning path"
 else
@@ -55,3 +55,4 @@ else
   unset AMENT_PREFIX_PATH
   unset COLCON_PREFIX_PATH
 fi
+echo "clean_env.sh line last"
