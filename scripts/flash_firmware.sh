@@ -15,7 +15,7 @@ else
     echo "Firmware folder not found. Please use ros2 run micro_ros_setup create_firmware_ws.sh to create a new project."
     exit 1
 fi
-
+echo "flash_firmware.sh line 18"
 # Flash specific firmware folder if needed
 if [ $PLATFORM != "generic" ] && [ -d "$PREFIX/config/$RTOS/generic" ]; then
     if [ -f $PREFIX/config/$RTOS/generic/flash.sh ]; then
@@ -32,3 +32,4 @@ else
       echo "No flash step found for $RTOS platform $PLATFORM"
     fi
 fi
+echo "flash_firmware.sh line last"
