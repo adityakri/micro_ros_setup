@@ -8,7 +8,7 @@ function help {
       echo "   --ip -i              agent IP in a network-like transport"
       echo "   --port -p            agent port in a network-like transport"
 }
-
+echo "configure.sh line 11"
 echo $CONFIG_NAME > $FW_TARGETDIR/APP
 
 if [ "$UROS_TRANSPORT" == "udp" ]; then
@@ -23,7 +23,7 @@ if [ "$UROS_TRANSPORT" == "udp" ]; then
       update_meta "microxrcedds_client" "UCLIENT_PROFILE_TCP=OFF"
       
       echo "Configured $UROS_TRANSPORT mode with agent at $UROS_AGENT_IP:$UROS_AGENT_PORT"
-
+echo "configure.sh line 26"
 elif [ "$UROS_TRANSPORT" == "serial" ]; then
       echo "Using serial device USART."
 
@@ -45,3 +45,4 @@ elif [ "$UROS_TRANSPORT" == "serial" ]; then
 else
       help
 fi
+echo "configure.sh line last"
