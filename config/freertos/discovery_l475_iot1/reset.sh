@@ -1,4 +1,4 @@
-OLIMEX_EXTENSIONS_DIR=$FW_TARGETDIR/freertos_apps/microros_olimex_e407_extensions
+OLIMEX_EXTENSIONS_DIR=$FW_TARGETDIR/freertos_apps/microros_discovery_l475_iot1_extensions
 
 pushd $OLIMEX_EXTENSIONS_DIR > /dev/null
 
@@ -13,6 +13,6 @@ else
   exit 1
 fi
 
-openocd -f $PROGRAMMER -f target/stm32f4x.cfg -c init -c "reset halt" -c "reset" -c "exit"
-
+openocd -f $PROGRAMMER -f target/stm32l4x.cfg -c init -c "reset halt" -c "reset" -c "exit"
+echo"reset.h line 17"
 popd > /dev/null
