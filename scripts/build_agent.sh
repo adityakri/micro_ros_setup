@@ -10,3 +10,4 @@ colcon build --packages-up-to micro_ros_agent $@ --cmake-args \
     "-DUAGENT_BUILD_EXECUTABLE=OFF" \
     "-DUAGENT_P2P_PROFILE=OFF" \
     "--no-warn-unused-cli"
+echo "build_agent.sh last"
