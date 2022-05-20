@@ -1,4 +1,3 @@
-
 EXTENSIONS_DIR=$FW_TARGETDIR/freertos_apps/microros_discovery_l475_iot1_extensions
 
 . $PREFIX/config/utils.sh
