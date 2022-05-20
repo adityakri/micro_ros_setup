@@ -3,7 +3,7 @@ EXTENSIONS_DIR=$FW_TARGETDIR/freertos_apps/microros_discovery_l475_iot1_extensio
 . $PREFIX/config/utils.sh
 
 pushd $EXTENSIONS_DIR >/dev/null   
-
+echo "build.sh line 6"
     export UROS_APP=$(head -n1 $FW_TARGETDIR/APP | tail -n1)
     export UROS_APP_FOLDER="$FW_TARGETDIR/freertos_apps/apps/$UROS_APP"
 
@@ -14,7 +14,7 @@ pushd $EXTENSIONS_DIR >/dev/null
         print_available_apps
         exit 1
     fi
-
+echo "build.sh line 17"
     if [ "$UROS_FAST_BUILD" = "off" ] || [ ! -d "build" ]; then
         # Clean micro-ROS build
         rm -rf $FW_TARGETDIR/mcu_ws/build $FW_TARGETDIR/mcu_ws/install $FW_TARGETDIR/mcu_ws/log
@@ -25,7 +25,8 @@ pushd $EXTENSIONS_DIR >/dev/null
         # Build micro-ROS stack
         make libmicroros
     fi
-
+echo "build.sh line 28"
     # Build firmware
     make -j$(nproc) UROS_APP_FOLDER=$UROS_APP_FOLDER
 popd >/dev/null
+echo "build.sh line last"
